@@ -1,0 +1,553 @@
+Windows PowerShell
+(C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены.
+
+Попробуйте новую кроссплатформенную оболочку PowerShell (https://aka.ms/pscore6)
+
+PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL> venv/scripts/activate
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL> pip install django
+Collecting django
+  Using cached Django-4.0.1-py3-none-any.whl (8.0 MB)
+Collecting tzdata
+  Using cached tzdata-2021.5-py2.py3-none-any.whl (339 kB)
+Collecting sqlparse>=0.2.2
+  Using cached sqlparse-0.4.2-py3-none-any.whl (42 kB)
+Collecting asgiref<4,>=3.4.1
+  Using cached asgiref-3.5.0-py3-none-any.whl (22 kB)
+Installing collected packages: tzdata, sqlparse, asgiref, django
+Successfully installed asgiref-3.5.0 django-4.0.1 sqlparse-0.4.2 tzdata-2021.5
+WARNING: You are using pip version 21.1.2; however, version 21.3.1 is available.
+You should consider upgrading via the 'C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\Scripts\python.exe -m pip install --upgrade pip' command.
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL> djngo-admin startproject NEWS
+djngo-admin : Имя "djngo-admin" не распознано как имя командлета, функции, файла сценария или выполняемой программы. Проверьте правильность написания имени, а также наличие и правильность пути, 
+после чего повторите попытку.
+строка:1 знак:1
++ djngo-admin startproject NEWS
++ ~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (djngo-admin:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL> djngo-admin startproject news
+djngo-admin : Имя "djngo-admin" не распознано как имя командлета, функции, файла сценария или выполняемой программы. Проверьте правильность написания имени, а также наличие и правильность пути, 
+после чего повторите попытку.
+строка:1 знак:1
++ djngo-admin startproject news
++ ~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (djngo-admin:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL> djngo -admin startproject news
+djngo : Имя "djngo" не распознано как имя командлета, функции, файла сценария или выполняемой программы. Проверьте правильность написания имени, а также наличие и правильность пути, после чего п
+овторите попытку.
+строка:1 знак:1
++ djngo -admin startproject news
++ ~~~~~
+    + CategoryInfo          : ObjectNotFound: (djngo:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL> dajngo-admin startproject news
+dajngo-admin : Имя "dajngo-admin" не распознано как имя командлета, функции, файла сценария или выполняемой программы. Проверьте правильность написания имени, а также наличие и правильность пути
+, после чего повторите попытку.
+строка:1 знак:1
++ dajngo-admin startproject news
++ ~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (dajngo-admin:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL> django-admin startproject news
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL> cd news
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news> python3 manage.py startapp news portal
+Python
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news> python manage.py startapp news
+CommandError: 'news' conflicts with the name of an existing Python module and cannot be used as an app name. Please try another name.
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news> python3 manage.py startapp newsportal
+Python
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news> python manage.py startapp newsportal
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news> python manage.py makemigrations
+Migrations for 'newsportal':
+  newsportal\migrations\0001_initial.py
+    - Create model Author
+    - Create model Category
+    - Create model Post
+    - Create model PostCategory
+    - Add field postCategory to post
+    - Create model Comment
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news> python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, newsportal, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying newsportal.0001_initial... OK
+  Applying sessions.0001_initial... OK
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news> python manage.py shell
+Python 3.9.7 (tags/v3.9.7:1016ef3, Aug 30 2021, 20:19:38) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from newsportal.models import *
+>>> u1 = User.objects.create_user(username='Pavel')
+>>> u1
+<User: Pavel>
+>>> u2 = User.objects.create_user(username='Marzena')
+>>> u3=User.objects.create_user(username='David')
+>>> u4 = User.objects.create_user(username='Ivan')
+>>> u2
+<User: Marzena>
+>>> u3
+<User: David>
+>>> u4
+<User: Ivan>
+>>> Author.objects.create(authorUser=u1)
+<Author: Pavel>
+>>> Author.objects.create(authorUser=u2)
+<Author: Marzena>
+>>> Category.objects.create(name='Automobili')
+<Category: Automobili>
+>>> Category.objects.create(name='Moto')
+<Category: Moto>
+>>> Category.objects.create(name='Mobile')
+<Category: Mobile>
+>>> Category.objects.create(name='Audio')
+<Category: Audio>
+>>> author = Author.objects.get(id=1)
+>>> author2 = Author.objects.get(id=2)
+>>> Post.objects.create(author=author, categoryType='NW', title='sometitle', text='bigtext')
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\models\base.py", line 525, in __repr__
+    return '<%s: %s>' % (self.__class__.__name__, self)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news\newsportal\models.py", line 64, in __str__
+    return f'{self.categoryType.CATEGORY_CHOICES}'
+AttributeError: 'str' object has no attribute 'CATEGORY_CHOICES'
+>>> Post.objects.create(author=author, categoryType='NW', title='sometitle', text='sometext')
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\models\base.py", line 525, in __repr__
+    return '<%s: %s>' % (self.__class__.__name__, self)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news\newsportal\models.py", line 64, in __str__
+    return f'{self.categoryType.CATEGORY_CHOICES}'
+AttributeError: 'str' object has no attribute 'CATEGORY_CHOICES'
+>>> Post.objects.create(author=author, categoryType='NW', title='sometitle', text='bigtext')
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\models\base.py", line 525, in __repr__
+    return '<%s: %s>' % (self.__class__.__name__, self)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news\newsportal\models.py", line 64, in __str__
+    return f'{self.categoryType.CATEGORY_CHOICES}'
+AttributeError: 'str' object has no attribute 'CATEGORY_CHOICES'
+>>> quit()
+
+KeyboardInterrupt
+>>> quit()
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news> py manage.py makemigrations
+Migrations for 'newsportal':
+  newsportal\migrations\0001_initial.py
+    - Create model Author
+    - Create model Category
+    - Create model Post
+    - Create model PostCategory
+    - Add field postCategory to post
+    - Create model Comment
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news> py manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, newsportal, sessions
+Running migrations:
+  Applying newsportal.0001_initial... OK
+  Applying sessions.0001_initial...Traceback (most recent call last):
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\backends\utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 414, in execute
+    return Database.Cursor.execute(self, query)
+sqlite3.OperationalError: table "django_session" already exists
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news\manage.py", line 22, in <module>
+    main()
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news\manage.py", line 18, in main
+    execute_from_command_line(sys.argv)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\core\management\__init__.py", line 425, in execute_from_command_line
+    utility.execute()
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\core\management\__init__.py", line 419, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\core\management\base.py", line 373, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\core\management\base.py", line 417, in execute
+    output = self.handle(*args, **options)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\core\management\base.py", line 90, in wrapped
+    res = handle_func(*args, **kwargs)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\core\management\commands\migrate.py", line 253, in handle
+    post_migrate_state = executor.migrate(
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\migrations\executor.py", line 126, in migrate
+    state = self._migrate_all_forwards(state, plan, full_plan, fake=fake, fake_initial=fake_initial)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\migrations\executor.py", line 156, in _migrate_all_forwards
+    state = self.apply_migration(state, migration, fake=fake, fake_initial=fake_initial)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\migrations\executor.py", line 236, in apply_migration
+    state = migration.apply(state, schema_editor)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\migrations\migration.py", line 125, in apply
+    operation.database_forwards(self.app_label, schema_editor, old_state, project_state)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\migrations\operations\models.py", line 92, in database_forwards
+    schema_editor.create_model(model)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\backends\base\schema.py", line 355, in create_model
+    self.execute(sql, params or None)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\backends\base\schema.py", line 151, in execute
+    cursor.execute(sql, params)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\backends\utils.py", line 99, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\backends\utils.py", line 76, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\backends\utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 414, in execute
+    return Database.Cursor.execute(self, query)
+django.db.utils.OperationalError: table "django_session" already exists
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news> py manage.py shell
+Python 3.9.7 (tags/v3.9.7:1016ef3, Aug 30 2021, 20:19:38) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> Post.objects.create(author=author, categoryType='NW', title='sometitle', text='bigtext')
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Post' is not defined
+>>> quit()
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news> cd ...
+cd : Объект по указанному пути C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news\... не существует.
+строка:1 знак:1
++ cd ...
++ ~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Set-Location], PSArgumentException
+    + FullyQualifiedErrorId : Argument,Microsoft.PowerShell.Commands.SetLocationCommand
+ 
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news> cd..
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL> py manage.py migrate
+C:\Users\Voltmaster\AppData\Local\Programs\Python\Python39\python.exe: can't open file 'C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\manage.py': [Errno 2] No such file or directory
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL> cd .\news\
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news> py manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, newsportal, sessions
+Running migrations:
+  Applying sessions.0001_initial...Traceback (most recent call last):
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\backends\utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 414, in execute
+    return Database.Cursor.execute(self, query)
+sqlite3.OperationalError: table "django_session" already exists
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news\manage.py", line 22, in <module>
+    main()
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news\manage.py", line 18, in main
+    execute_from_command_line(sys.argv)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\core\management\__init__.py", line 425, in execute_from_command_line
+    utility.execute()
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\core\management\__init__.py", line 419, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\core\management\base.py", line 373, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\core\management\base.py", line 417, in execute
+    output = self.handle(*args, **options)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\core\management\base.py", line 90, in wrapped
+    res = handle_func(*args, **kwargs)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\core\management\commands\migrate.py", line 253, in handle
+    post_migrate_state = executor.migrate(
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\migrations\executor.py", line 126, in migrate
+    state = self._migrate_all_forwards(state, plan, full_plan, fake=fake, fake_initial=fake_initial)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\migrations\executor.py", line 156, in _migrate_all_forwards
+    state = self.apply_migration(state, migration, fake=fake, fake_initial=fake_initial)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\migrations\executor.py", line 236, in apply_migration
+    state = migration.apply(state, schema_editor)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\migrations\migration.py", line 125, in apply
+    operation.database_forwards(self.app_label, schema_editor, old_state, project_state)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\migrations\operations\models.py", line 92, in database_forwards
+    schema_editor.create_model(model)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\backends\base\schema.py", line 355, in create_model
+    self.execute(sql, params or None)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\backends\base\schema.py", line 151, in execute
+    cursor.execute(sql, params)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\backends\utils.py", line 99, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\backends\utils.py", line 76, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\backends\utils.py", line 83, in _execute
+    return self.cursor.execute(sql)
+  File "C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 414, in execute
+    return Database.Cursor.execute(self, query)
+django.db.utils.OperationalError: table "django_session" already exists
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news> py manage.py makemigrations
+Migrations for 'newsportal':
+  newsportal\migrations\0001_initial.py
+    - Create model Author
+    - Create model Category
+    - Create model Post
+    - Create model PostCategory
+    - Add field postCategory to post
+    - Create model Comment
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news> py manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, newsportal, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying newsportal.0001_initial... OK
+  Applying sessions.0001_initial... OK
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news> py manage.py shell
+Python 3.9.7 (tags/v3.9.7:1016ef3, Aug 30 2021, 20:19:38) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from news.models import *
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+ModuleNotFoundError: No module named 'news.models'
+>>> from news.models import *
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+ModuleNotFoundError: No module named 'news.models'
+>>> from news.models import *
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+ModuleNotFoundError: No module named 'news.models'
+>>> from news.models import *
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+ModuleNotFoundError: No module named 'news.models'
+>>> from news.models import *
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+ModuleNotFoundError: No module named 'news.models'
+>>> from newsportal.models import *
+>>> u1 = User.objects.create_user(username='Pavel')
+>>> u2 = User.objects.create_user(username='Marzena')
+>>> u3 =  = User.objects.create_user(username='David')
+  File "<console>", line 1
+    u3 =  = User.objects.create_user(username='David')
+          ^
+SyntaxError: invalid syntax
+>>> u3 = User.objects.create_user(username='David')
+>>> u4 = User.objects.create_user(username='Ivan')
+>>> Author.objects.create(authorUser=u1)
+<Author: Author object (1)>
+>>> Author.objects.create(authorUser=u2)
+<Author: Author object (2)>
+>>> Category.objects.create(name='T')
+<Category: Category object (1)>
+>>> Category.objects.create(name='Auto')
+<Category: Category object (2)>
+>>> Category.objects.create(name='Moto')
+<Category: Category object (3)>
+>>> Category.objects.create(name='Kino')
+<Category: Category object (4)>
+>>> author = Author.objects.get(id=1)
+>>> author2 = Author.objects.get(id=2)
+>>> autor2
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'autor2' is not defined
+>>> author2
+<Author: Author object (2)>
+>>> Post.objects.create(author=author, categoryType='NW', title='sometitle', text='sometext')
+<Post: Post object (1)>
+>>> Post.objects.get(id=1).title
+'sometitle'
+>>> Post.objects.create(author=author, categoryType='AR', title='Healthing', text='Big text')
+<Post: Post object (2)>
+>>> Post.objects.create(author=author2, categoryType='AR', title='Python', text='New bit text!')
+<Post: Post object (3)>
+>>> Post.objects.get(id=1).postCategory.add(Category.objects.get(id=1))
+>>> Post.objects.get(id=2).postCategory.add(Category.objects.get(id=2))
+>>> Post.objects.get(id=3).postCategory.add(Category.objects.get(id=1))
+>>> Post.objects.get(id=1).postCategory.add(Category.objects.get(id=3))
+>>> Post.objects.get(id=2).postCategory.add(Category.objects.get(id=4))
+>>> Post.objects.get(id=3).postCategory.add(Category.objects.get(id=3))
+>>> Comment.objects.create(commentPost=Post.objects.get(id=1), commentUser=Author.objects.get(id=1).authorUser, text='good!!!')
+<Comment: Comment object (1)>
+>>> Comment.objects.create(commentPost=Post.objects.get(id=1), commentUser=Author.objects.get(id=2).authorUser, text='interesting news')
+<Comment: Comment object (2)>
+>>> Comment.objects.create(commentPost=Post.objects.get(id=2), commentUser=Author.objects.get(id=2).authorUser, text=':-)')
+<Comment: Comment object (3)>
+>>> Comment.objects.create(commentPost=Post.objects.get(id=3), commentUser=Author.objects.get(id=1).authorUser, text='ha-ha-ha!!!')
+<Comment: Comment object (4)>
+>>> Comment.objects.create(commentPost=Post.objects.get(id=3), commentUser=Author.objects.get(id=2).authorUser, text='Hello Skillfactory')
+<Comment: Comment object (5)>
+>>> Comment.objects.get(id=1).like()
+>>> Comment.objects.get(id=1).dislike()
+>>> Comment.objects.get(id=1).dislike()
+>>> Comment.objects.get(id=1).dislike()
+>>> Comment.objects.get(id=1).rating
+-2
+>>> Comment.objects.get(id=2).like()
+>>> Comment.objects.get(id=2).like()
+>>> Comment.objects.get(id=2).like()
+>>> Comment.objects.get(id=3).like()
+>>> Comment.objects.get(id=3).like()
+>>> Comment.objects.get(id=4).like()
+>>> Comment.objects.get(id=5).like()
+>>> Comment.objects.get(id=2).rating
+3
+>>> Post.objects.get(id=1).like()
+>>> Post.objects.get(id=1).like()
+>>> Post.objects.get(id=1).like()
+>>> Post.objects.get(id=1).like()
+>>> Post.objects.get(id=1).like()
+>>> Post.objects.get(id=1).like()
+>>> Post.objects.get(id=2).like()
+>>> Post.objects.get(id=1).like()
+>>> Post.objects.get(id=2).like()
+>>> Post.objects.get(id=2).like()
+>>> Post.objects.get(id=1).like()
+>>> Post.objects.get(id=3).like()
+>>> Post.objects.get(id=3).like()
+>>> Post.objects.get(id=3).like()
+>>> Post.objects.get(id=3).like()
+>>> Post.objects.get(id=3).like()
+>>> Post.objects.get(id=3).like()
+>>> Post.objects.get(id=3).dislike()
+>>> Post.objects.get(id=1).dislike()
+>>>  Post.objects.get(id=1).dislike()
+  File "<console>", line 1
+    Post.objects.get(id=1).dislike()
+IndentationError: unexpected indent
+>>> Post.objects.get(id=1).dislike()
+>>> Post.objects.get(id=1).rating
+6
+>>> Comment.objects.create(commentPost=Post.objects.get(id=3), commentUser=User.objects.get(id=3), text='Hello!!!')
+<Comment: Comment object (6)>
+>>> Comment.objects.create(commentPost=Post.objects.get(id=1), commentUser=User.objects.get(id=4), text='SomeComment')
+<Comment: Comment object (7)>
+>>> Comment.objects.get(id=6).like()
+>>> Comment.objects.get(id=7).like()
+>>> Author.objects.get(id=1)
+<Author: Author object (1)>
+>>> a = Author.objects.get(id=1)
+>>> a.update_rating()
+>>> a.ratingAuthor
+26
+>>> b = Author.objects.get(id=2)
+>>> b.update_rating()
+>>> b.ratingAuthor
+21
+>>> a = Author.objects.order_by('-ratingAuthor')[:1]
+>>> a
+<QuerySet [<Author: Author object (1)>]>
+>>> a = Author.objects.order_by('-ratingAuthor')
+>>> a
+<QuerySet [<Author: Author object (1)>, <Author: Author object (2)>]>
+>>> for i in a:
+... i.ratingAuthor
+  File "<console>", line 2
+    i.ratingAuthor
+    ^
+IndentationError: expected an indented block
+>>> for i in a:
+...     i.ratingAuthor
+...     i.authorUser.username
+...
+26
+'Pavel'
+21
+'Marzena'
+>>> Post.objects.get(id=1).preview()
+'sometext...'
+>>> Post.objects.get(id=3).preview()
+'New bit text!...'
+>>> bestPost = Post.objects.order_by('-rating')[:1]
+>>> bestPost
+<QuerySet [<Post: Post object (1)>]>
+>>> for i in bestPost:
+...     i.dateCreation
+...     ...     i.author.authorUser
+  File "<console>", line 3
+        ...     i.author.authorUser
+TabError: inconsistent use of tabs and spaces in indentation
+>>>     ...     i.rating
+  File "<console>", line 1
+        ...     i.rating
+    ^
+IndentationError: unexpected indent
+>>>     ...     i.title
+  File "<console>", line 1
+        ...     i.title
+    ^
+IndentationError: unexpected indent
+>>> for i in bestPost:
+...     i.dateCreation
+...     i.author.authorUser
+...     i.rating
+...     i.title
+...     i.preview()
+...
+datetime.datetime(2022, 1, 28, 22, 4, 25, 771111, tzinfo=datetime.timezone.utc)
+<User: Pavel>
+6
+'sometitle'
+'sometext...'
+>>> bestPostCom = Comment.objects.filter(commentPost=3)
+>>> bestPostCom
+<QuerySet [<Comment: Comment object (4)>, <Comment: Comment object (5)>, <Comment: Comment object (6)>]>
+>>> for k in bestPostCom:
+...     k.dateCreating
+...     k.commentUser
+...     k.rating
+...     k.text
+...
+datetime.datetime(2022, 1, 28, 22, 9, 3, 277331, tzinfo=datetime.timezone.utc)
+<User: Pavel>
+1
+'ha-ha-ha!!!'
+datetime.datetime(2022, 1, 28, 22, 9, 12, 429202, tzinfo=datetime.timezone.utc)
+<User: Marzena>
+1
+'Hello Skillfactory'
+datetime.datetime(2022, 1, 28, 22, 13, 56, 645432, tzinfo=datetime.timezone.utc)
+<User: David>
+1
+'Hello!!!'
+>>> bestPostCom.values("dateCreating", "commentUser", "rating", "text")
+<QuerySet [{'dateCreating': datetime.datetime(2022, 1, 28, 22, 9, 3, 277331, tzinfo=datetime.timezone.utc), 'commentUser': 1, 'rating': 1, 'text': 'ha-ha-ha!!!'}, {'dateCreating': datetime.dateti
+me(2022, 1, 28, 22, 9, 12, 429202, tzinfo=datetime.timezone.utc), 'commentUser': 2, 'rating': 1, 'text': 'Hello Skillfactory'}, {'dateCreating': datetime.datetime(2022, 1, 28, 22, 13, 56, 645432,
+ tzinfo=datetime.timezone.utc), 'commentUser': 3, 'rating': 1, 'text': 'Hello!!!'}]>
+>>> quit()
+(venv) PS C:\Users\Voltmaster\Skillfactory\D2.9 NEWS PORTAL\news>
