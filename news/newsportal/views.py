@@ -5,10 +5,11 @@ from .filters import PostFilter
 from .forms import PostForm
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 
-class PostList(LoginRequiredMixin, ListView):
+
+class PostList(ListView):
     model = Post
     template_name = 'news.html'
     context_object_name = 'news'
@@ -45,13 +46,15 @@ class PostSearch(ListView):
         context['filter'] = PostFilter(self.request.GET, queryset=self.get_queryset())
         return context
 
-class PostAdd(CreateView):
+class PostAdd(PermissionRequiredMixin, CreateView):
     model = Post
     template_name = 'add.html'
     context_object_name = 'add'
     queryset = Post.objects.order_by('-dateCreation')
     paginate_by = 10
     form_class = PostForm  # добавляем форм класс, чтобы получать доступ к форме через метод POST
+    permission_required = ('news.add_post',)
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -73,9 +76,11 @@ class PostAdd(CreateView):
 
 
 # дженерик для редактирования объекта
-class PostUpdateView(UpdateView):
+class PostUpdateView(PermissionRequiredMixin, UpdateView):
     template_name = 'add.html'
     form_class = PostForm
+    permission_required = ('news.change_post',)
+
 
     # метод get_object мы используем вместо queryset, чтобы получить информацию об объекте, который мы собираемся редактировать
     def get_object(self, **kwargs):
@@ -84,10 +89,11 @@ class PostUpdateView(UpdateView):
 
 
 # дженерик для удаления товара
-class PostDeleteView(DeleteView):
+class PostDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = 'post_delete.html'
     queryset = Post.objects.all
     success_url = '/news/'
+    permission_required = ('news.delete_post',)
 
 
     def get_object(self, **kwargs):
