@@ -1,5 +1,6 @@
+from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
-from .models import Post, Author, Category
+from .models import Post, Author, Category, User
 from datetime import datetime
 from .filters import PostFilter
 from .forms import PostForm
@@ -104,3 +105,19 @@ class PostDeleteView(PermissionRequiredMixin, DeleteView):
 @method_decorator(login_required, name='dispatch')
 class ProtectedView(TemplateView):
     template_name = 'prodected_page.html'
+
+@login_required
+def add_subscribe(request, **kwargs):
+    pk = request.GET.get('pk', )
+    print('Пользователь', request.user, 'добавлен в подписчики категории:', Category.objects.get(pk=pk))
+    Category.objects.get(pk=pk).subscribers.add(request.user)
+    return redirect('/news/')
+
+
+# функция отписки от группы
+@login_required
+def del_subscribe(request, **kwargs):
+    pk = request.GET.get('pk', )
+    print('Пользователь', request.user, 'удален из подписчиков категории:', Category.objects.get(pk=pk))
+    Category.objects.get(pk=pk).subscribers.remove(request.user)
+    return redirect('/news/')
