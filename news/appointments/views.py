@@ -1,11 +1,9 @@
 from datetime import datetime
-
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
+from django.core.mail import send_mail
 from django.views import View
-from django.core.mail import EmailMultiAlternatives
 from newsportal.models import Category, Post
 from .models import Appointment
-from django.template.loader import render_to_string
 
 
 class AppointmentView(View):

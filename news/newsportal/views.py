@@ -54,7 +54,7 @@ class PostAdd(PermissionRequiredMixin, CreateView):
     queryset = Post.objects.order_by('-dateCreation')
     paginate_by = 10
     form_class = PostForm  # добавляем форм класс, чтобы получать доступ к форме через метод POST
-    permission_required = ('news.add_post',)
+    permission_required = ('newsportal.add_post',)
 
 
     def get_context_data(self, **kwargs):
@@ -80,7 +80,7 @@ class PostAdd(PermissionRequiredMixin, CreateView):
 class PostUpdateView(PermissionRequiredMixin, UpdateView):
     template_name = 'add.html'
     form_class = PostForm
-    permission_required = ('news.change_post',)
+    permission_required = ('newsportal.change_post',)
 
 
     # метод get_object мы используем вместо queryset, чтобы получить информацию об объекте, который мы собираемся редактировать
@@ -94,7 +94,7 @@ class PostDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = 'post_delete.html'
     queryset = Post.objects.all
     success_url = '/news/'
-    permission_required = ('news.delete_post',)
+    permission_required = ('newsportal.delete_post',)
 
 
     def get_object(self, **kwargs):
