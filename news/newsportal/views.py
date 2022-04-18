@@ -7,6 +7,8 @@ from .forms import PostForm
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.template.loader import render_to_string
+from .tasks import send_mail_for_sub_once
 
 
 
@@ -120,4 +122,51 @@ def del_subscribe(request, **kwargs):
     pk = request.GET.get('pk', )
     print('Пользователь', request.user, 'удален из подписчиков категории:', Category.objects.get(pk=pk))
     Category.objects.get(pk=pk).subscribers.remove(request.user)
+    return redirect('/news/')
+
+
+def send_mail_for_sub(instance):
+    print('Представления - начало')
+    print()
+    print('====================ПРОВЕРКА СИГНАЛОВ===========================')
+    print()
+    print('задача - отправка письма подписчикам при добавлении новой статьи')
+
+    sub_text = instance.text
+
+    category = Category.objects.get(pk=Post.objects.get(pk=instance.pk).category.pk)
+    print()
+    print('category:', category)
+    print()
+    subscribers = category.subscribers.all()
+
+
+    print('Адреса рассылки:')
+    for pos in subscribers:
+        print(pos.email)
+
+    print()
+    print()
+    print()
+    for subscriber in subscribers:
+
+        print('**********************', subscriber.email, '**********************')
+        print(subscriber)
+        print('Адресат:', subscriber.email)
+
+        html_content = render_to_string(
+            'mail.html', {'user': subscriber, 'text': sub_text[:50], 'post': instance})
+
+        sub_username = subscriber.username
+        sub_useremail = subscriber.email
+
+        print()
+        print(html_content)
+        print()
+
+        send_mail_for_sub_once.delay(sub_username, sub_useremail, html_content)
+
+
+    print('Представления - конец')
+
     return redirect('/news/')

@@ -1,7 +1,5 @@
 import logging
-
 from django.conf import settings
-
 from apscheduler.schedulers.blocking import BlockingScheduler
 from apscheduler.triggers.cron import CronTrigger
 from django.core.mail import EmailMultiAlternatives
@@ -9,10 +7,10 @@ from django.core.management.base import BaseCommand
 from django.template.loader import render_to_string
 from django_apscheduler.jobstores import DjangoJobStore
 from django_apscheduler.models import DjangoJobExecution
-
 from datetime import datetime
-
 from news.newsportal.models import Category, Post
+from news.newsportal.tasks import send_mail_every_week
+
 
 logger = logging.getLogger(__name__)
 
@@ -90,13 +88,15 @@ def news_sender():
                                      'category_name': category.name,
                                      'week_number_last': week_number_last})
 
-            msg = EmailMultiAlternatives(
-                subject=f'Здравствуй, {subscriber.username}, новые статьи за прошлую неделю в вашем разделе!',
-                from_email='Djangomailtest1@yandex.ru',
-                to=[subscriber.email]
-            )
+            # msg = EmailMultiAlternatives(
+            #     subject=f'Здравствуй, {subscriber.username}, новые статьи за прошлую неделю в вашем разделе!',
+            #     from_email='Djangomailtest1@yandex.ru',
+            #     to=[subscriber.email]
+            # )
 
-            msg.attach_alternative(html_content, 'text/html')
+            send_mail_every_week(sub_username, sub_useremail, html_content)
+
+            # msg.attach_alternative(html_content, 'text/html')
             print()
 
             # для удобства в консоль выводим содержимое нашего письма, в тестовом режиме проверим, что и

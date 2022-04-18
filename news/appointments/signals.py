@@ -1,7 +1,6 @@
 from django.core.mail import mail_managers
 from django.db.models.signals import post_save
 from django.dispatch import receiver  # импортируем нужный декоратор
-
 from .models import Appointment
 
 # в декоратор передаётся первым аргументом сигнал, на который будет реагировать эта функция,
